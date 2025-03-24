@@ -35,50 +35,42 @@ body {
 }
 
 
-/* 🌟 Sidebar Links */
-.sidebar ul li a {
+/* Barre supérieure */
+.top-bar {
     display: flex;
+    justify-content: start;
     align-items: center;
-    color: #333;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 12px;
-    font-weight: 600;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px;
-}
-
-.sidebar ul li a:hover {
-    background: rgba(0, 0, 255, 0.1);
-    color: blue;
-    transform: translateX(5px);
-}
-
-/* Style for icons */
-.sidebar ul li a i,
-.sidebar-footer a i {
-    margin-right: 10px;
-    font-size: 18px;
-    color: #555;
-    transition: color 0.3s ease-in-out;
-}
-/* 📌 Sidebar Navigation Links */
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0 0;
-}
-
-.sidebar ul li {
     padding: 15px;
-    transition: all 0.3s ease-in-out;
+}
+
+
+.menu-icon {
+    font-size: 35px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-.sidebar ul li:hover {
-    background: #f0f0f0;
-}
 
+/* 🌟 Sidebar Container */
+.sidebar {
+    position: fixed;
+    top: 0;
+    overflow-y: auto; /* Active le défilement vertical si nécessaire */
+    left: -250px; /* Sidebar is hidden by default */
+    width: 250px;
+    height: 100%;
+    background: #ffffff;
+    color: #333;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd;
+}
 
 /* icons */
 
@@ -100,87 +92,86 @@ body {
     color: red;
 }
 
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px; /* Ajuste la largeur */
-    height: 100%; /* Pleine hauteur */
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    transform: translateX(-100%); /* Cachée par défaut */
-    transition: transform 0.3s ease-in-out;
-   
-}
-.sidebar {
-    position: fixed; /* ou absolute si nécessaire */
-    top: 0;
-    left: 0;
-    width: 220px; /* Ajuste selon ta sidebar */
-    height: 100vh; /* Pour qu'elle prenne toute la hauteur */
-    background-color: #f5f5f5; /* Couleur de fond */
-    z-index: 10; /* Assure qu'elle reste en dessous */
+/* ✖ Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
-.departments-bar {
-    position: relative;
-    margin-top: 100px; /* Ajuste pour descendre la barre */
-    z-index: 5; /* Doit être inférieur à celui de la sidebar */
+.close-btn:hover {
+
+    color: red;
 }
 
-#sidebar.active {
-    transform: translateX(0); /* Affichée quand active */
+/* 📌 Sidebar Navigation Links */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0 0;
 }
 
-/* Styles de la sidebar */
-.sidebar {
-    width: 150px; /* Ajuste la largeur selon ton besoin */
-    height: 100vh; /* Prend toute la hauteur de l'écran */
-    overflow-y: auto; /* Active le défilement vertical si nécessaire */
+.sidebar ul li {
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background: #f0f0f0;
+}
+
+/* 🌟 Sidebar Links */
+.sidebar ul li a {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espace bien les éléments */
-    background: white;
-    position: fixed; /* Fixe la barre à gauche */
-    top: 0;
-    left: 0;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Réduit l’espace intérieur */
-}
-/* Ajuster l’espacement des liens du menu */
-.sidebar-menu {
-    flex-grow: 1; /* Permet au menu de prendre tout l’espace dispo */
-   margin-top: auto;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
-
-.sidebar-menu li {
-    margin-top: 0; /* Enlève la marge */
-    padding-top: 0px; /* Ajuste légèrement si nécessaire */
-    margin-bottom: 5px; /* Réduit l’espace entre les éléments */
-    
+.sidebar ul li a:hover {
+    background: rgba(0, 0, 255, 0.1);
+    color: blue;
+    transform: translateX(5px);
 }
 
-/* Le footer reste en bas mais peut défiler si nécessaire */
+/* 🔵 Active Link */
+.sidebar ul li a.active {
+    color: blue;
+    border-left: 4px solid blue;
+    background: rgba(0, 0, 255, 0.1);
+}
+
+/* ⚙ Sidebar Footer (Settings & Logout) */
 .sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    align-items: start; /* Alignement à gauche */
-    gap: 5px; /* Espace entre les éléments */
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px solid #ddd; /* Séparateur propre */
 }
+
 .sidebar-footer a {
     display: flex;
     align-items: center;
     color: #333;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     padding: 12px;
     font-weight: 600;
     transition: all 0.3s ease-in-out;
 }
+
 .sidebar-footer a:hover {
     background: rgba(0, 0, 255, 0.1);
     color: blue;
@@ -197,83 +188,13 @@ body {
     background: rgba(255, 0, 0, 0.1);
     color: darkred;
 }
+
 /* 📌 Sidebar Visibility */
 .sidebar.active {
     left: 0;
 }
 
-.grand-titre{
-    text-align: center;
-    font-size: 40px;
-}
-.text{
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.text span{
-    color: #D28C64; 
-    font-weight: bold;
-}
-.sidebar {
-    min-height: 100vh; /* Utilise toute la hauteur de l'écran */
-    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
-}
-
-
-.sidebar-menu img,
-.sidebar-menu i {
-    width: 25px; /* Taille uniforme */
-    height: 25px;
-    display: inline-block; /* Toujours affiché */
-}
-
-/* Masquer la sidebar par défaut */
-.sidebar.hidden {
-    transform: translateX(-100%);
-}
-
-/* Styles du bouton menu */
-.menu-icon {
-    font-size: 25px;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-}
-
-/* Bouton de fermeture */
-.close-btn {
-    font-size: 25px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-
-}
-
-/* Menu de la sidebar */
-.sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.sidebar-menu li {
-    padding: 10px 0;
-}
-
-.sidebar-menu a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-
-
-/* Le footer reste en bas mais peut défiler si nécessaire */
+* Le footer reste en bas mais peut défiler si nécessaire */
 .sidebar-footer {
     display: flex;
     flex-direction: column;
